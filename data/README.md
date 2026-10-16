@@ -7,7 +7,7 @@ Use the FCA **Firm-Specific Complaints Data — 2025 H2** workbook.
 Official source:
 https://www.fca.org.uk/data/complaints-data/firm-level
 
-The workbook contains the firm-level tables used for:
+The workbook includes firm-level complaint information for:
 - complaints opened;
 - complaints closed;
 - closure timing;
@@ -18,56 +18,55 @@ The workbook contains the firm-level tables used for:
 
 ## Raw File
 
-Store the original downloaded workbook unchanged:
+Store the original workbook unchanged:
 
 ```text
 data/raw/
 └── fca-firm-level-complaints-2025-h2.xlsx
 ```
 
-Do not export and overwrite the source workbook as your only raw copy.
+Do not overwrite the source workbook with a cleaned version.
 
 ## Core Reporting Period
 
-Use **2025 H2: 1 July to 31 December 2025** as the mandatory frozen cohort.
+Mandatory frozen cohort:
+**2025 H2 — 1 July to 31 December 2025**
 
-This is sufficient for the core cross-sectional conduct-risk exercise.
+This is sufficient for the core cross-sectional conduct-risk work.
 
 ## Recommended Historical Extension
 
-For persistence/trend analysis, add prior half-year files from the FCA archive:
+For persistence/trend analysis, add prior half-year files from:
+https://www.fca.org.uk/data/complaints-data/previous-complaints-data
+
+Recommended:
 - 2025 H1;
 - 2024 H2;
 - optionally 2024 H1.
 
-Official historical page:
-https://www.fca.org.uk/data/complaints-data/previous-complaints-data
+Use at least **4 half-year periods** before describing an issue as persistent.
 
-Recommended trend scope: **at least 4 half-year periods** if the team is making claims about persistence.
+## Workbook Handling
 
-Do not describe a one-period outlier as a persistent issue.
-
-## Important Workbook Handling
-
-The workbook may contain:
-- multiple product-group tabs;
-- context fields with different meanings;
-- joint reporters;
-- notes/definitions.
-
-Teams must:
-1. identify the correct sheet(s);
-2. preserve firm identifiers/names;
+Before analysis:
+1. identify the required sheet(s);
+2. preserve firm names/identifiers;
 3. document product-group mapping;
-4. document which context denominator is used for each complaint-rate metric;
-5. retain notes about joint reporters.
+4. document the denominator/context field used for each rate;
+5. retain joint-reporter notes.
 
-## Small vs Larger Working Data
+## Recommended Grain
 
-The raw XLSX is manageable enough to keep directly in GitHub.
+Use a clearly documented firm × product-group × reporting-period grain.
 
-Processed analytical CSV/Parquet outputs should go in `data/processed/`, not replace the source workbook.
+Do not combine incompatible context measures.
+
+## Processed Data
+
+Derived CSV/Parquet outputs belong in `data/processed/`.
+
+Keep the original XLSX as the frozen raw source.
 
 ## Optional Aggregate Data
 
-The FCA also publishes aggregate complaint tables. These may be used for validation or context but should not replace the firm-level workbook for this project.
+FCA aggregate complaints tables may be used for validation/context, but they should not replace the firm-level source.
